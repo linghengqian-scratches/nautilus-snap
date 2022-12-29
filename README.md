@@ -4,16 +4,16 @@
   Nautilus
 </h1>
 
-<p align="center"><b>This is the snap for Nautilus</b>, <i>“Single-line elevator pitch for your amazing snap”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
+<p align="center"><b>This is the snap for Nautilus</b>, <i>“Also known as Nautilus. Provides the user with a simple way to navigate and manage files”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
 distributions.</p>
 
 <!-- Uncomment and modify this when you are provided a build status badge
 <p align="center">
 <a href="https://snapcraft.io/nautilus">
-  <img alt="enpass" src="https://snapcraft.io/my-snap-name/badge.svg" />
+  <img alt="enpass" src="https://snapcraft.io/nautilus/badge.svg" />
 </a>
 <a href="https://snapcraft.io/nautilus">
-  <img alt="enpass" src="https://snapcraft.io/my-snap-name/trending.svg?name=0" />
+  <img alt="enpass" src="https://snapcraft.io/nautilus/trending.svg?name=0" />
 </a>
 </p>
 -->
@@ -36,10 +36,10 @@ distributions.</p>
 
 ## Remaining tasks
 <!-- Uncomment and modify this when you have a screenshot
-![my-snap-name](screenshot.png?raw=true "nautilus")
+![nautilus](screenshot.png?raw=true "nautilus")
 -->
 
-Snapcrafters ([join us](https://forum.snapcraft.io/t/snapcrafters-reboot/24625)) are working to land snap install documentation and the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/master/snap/snapcraft.yaml) upstream so [Project] can authoritatively publish future releases.
+Snapcrafters ([join us](https://forum.snapcraft.io/t/snapcrafters-reboot/24625)) are working to land snap install documentation and the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/master/snap/snapcraft.yaml) upstream so Nautilus can authoritatively publish future releases.
 
   - [x] Click the green "Use this template" button above to create a new repository based on this template
   - [x] Give the newly created repository a sensible name, like `godzilla` if you're snapping the Godzilla software (*Note: Do not use `snap` in this name.*)
@@ -77,9 +77,9 @@ If you have any questions, [post in the Snapcraft forum](https://forum.snapcraft
 <!--
 ## The Snapcrafters
 
-| [![Your Name](https://gravatar.com/avatar/bc0bced65e963eb5c3a16cab8b004431/?s=128)](https://github.com/yourname/) |
+| [![Ling Hengqian](https://avatars.githubusercontent.com/u/20187731?v=4)](https://github.com/linghengqian/) |
 | :---: |
-| [Your Name](https://github.com/yourname/) |
+| [Ling Hengqian](https://github.com/linghengqian/) |
 --> 
 
 <!-- Uncomment and modify this when you have upstream contacts
