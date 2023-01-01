@@ -6,12 +6,67 @@ description: |
   It provides a simple and integrated way of managing your files and browsing your file system.
 
 confinement: devmode # use 'strict' once you have the right plugs and slots
+base: core22
 
 parts:
   nautilus:
-    plugin: dump
-    source: https://download.gnome.org/sources/nautilus/43/nautilus-43.1.tar.xz
+    source: https://gitlab.gnome.org/GNOME/nautilus
+    source-tag: '43.1'
+    source-type: git
+    plugin: meson
+    meson-parameters:
+      - --prefix=/usr
+      - --buildtype=release
+      - -Dbugreport_url=https://gitlab.gnome.org/GNOME/nautilus/issues
+    parse-info: [usr/share/metainfo/org.gnome.Nautilus.appdata.xml]
+    build-packages:
+      - libeditorconfig-dev
+      - libfreetype6
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=10)
+      sed -i.bak -e 's|Icon=@app_id@$|Icon=snap.gnome-text-editor.icon|g' data/org.gnome.Nautilus.desktop.in.in
+    override-build: |
+      craftctl default
+      mkdir -p ${CRAFT_PART_INSTALL}/meta/gui/icons/hicolor/scalable/apps
+      cp ../src/data/icons/org.gnome.Nautilus.svg ${CRAFT_PART_INSTALL}/meta/gui/icons/hicolor/scalable/apps/snap.gnome-text-editor.icon.svg
+    override-prime: |
+      craftctl default
+      for i in $CRAFT_PRIME/usr/share/icons/*;
+      do
+        if [ -f $i/index.theme ];
+        then
+          echo Updating cache at $i
+          gtk-update-icon-cache $i
+        fi
+      done
+  libraries:
+    after: [ nautilus ]
+    plugin: nil
+    stage-packages:
+      - libeditorconfig0
+    prime:
+      - usr/lib/*/libeditorconfig.so.*
 
 apps:
   nautilus:
-    command: nautilus
+   extensions: [gnome]
+   command: usr/bin/nautilus
+   desktop: usr/share/applications/org.gnome.Nautilus.desktop
+   common-id: org.gnome.Nautilus.desktop
+   plugs:
+     - gsettings
+     - mount-observe
+     - cups
+     - home
+ 
+slots:
+  # for GtkApplication registration
+  nautilus:
+    interface: dbus
+    bus: session
+    name: org.gnome.Nautilus
+
+layout:
+  /usr/share/nautilus:
+    bind: $SNAP/usr/share/nautilus
